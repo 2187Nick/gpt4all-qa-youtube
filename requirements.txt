@@ -4,3 +4,4 @@ youtube-transcript-api
 sentence_transformers
 chromadb
 pyllamacpp
+gradio
