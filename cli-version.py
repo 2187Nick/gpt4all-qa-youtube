@@ -7,11 +7,15 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 
 # enter the path to your model here
-select_model = './models/gpt4all-converted.bin'
+select_model = 'C:/Users/EtherRig/gpt_discord/models/gpt4all-converted.bin' # ./models/gpt4all-converted.bin'
 
 # enter your youtube link here
 youtube_link = "https://www.youtube.com/watch?v=GhRNIuTA2Z0" 
 
+# set the length of the response you want
+results_length = 30
+# increase this number to get more random results
+model_temp = 0.3
 
 loader = YoutubeLoader.from_youtube_channel(youtube_link, add_video_info=True)
 
@@ -51,7 +55,7 @@ if not os.path.exists(persist_directory):
 else:
     db_vector = Chroma(embedding_function=embeddings, persist_directory=persist_directory)
 
-llm = GPT4All(model=select_model, n_predict=40, temp=0.3) # n_ctx=512, n_threads=8, n_predict=100, temp=.8
+llm = GPT4All(model=select_model, n_predict=results_length, temp=model_temp) # n_ctx=512, n_threads=8, n_predict=100, temp=.8
 
 retriever = db_vector.as_retriever()
 qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever) #, chain_type_kwargs=chain_type_kwargs)
@@ -64,6 +68,3 @@ while True:
     # Query the youtube video data 
     result = qa(query, return_only_outputs=True)
     print("Youtube Sourced Answer: ", parse_answer(result))
-
-       
-        
