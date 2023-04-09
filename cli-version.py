@@ -7,7 +7,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 
 # enter the path to your model here
-select_model = 'C:/Users/EtherRig/gpt_discord/models/gpt4all-converted.bin' # ./models/gpt4all-converted.bin'
+select_model = 'models/gpt4all-converted.bin' # ./models/gpt4all-converted.bin'
 
 # enter your youtube link here
 youtube_link = "https://www.youtube.com/watch?v=GhRNIuTA2Z0" 
