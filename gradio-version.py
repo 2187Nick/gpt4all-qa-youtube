@@ -8,7 +8,13 @@ from langchain.chains import RetrievalQA
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 
+# enter the location of your model
 select_model = './models/gpt4all-converted.bin'
+# set the length of the response you want
+results_length = 30
+# increase this number to get more random results
+model_temp = 0.3
+
 model = Model(ggml_model=select_model)
 
 def youtube_video_to_text(Youtube_Link, Question):
@@ -61,7 +67,7 @@ def youtube_video_to_text(Youtube_Link, Question):
     parse_answer = lambda x: x["result"].split("Answer:")[1].strip()
 
     # Query the model directly
-    general_answer = model.generate(Question, n_predict=30, temp=0.3)
+    general_answer = model.generate(Question, n_predict=results_length, temp=model_temp)
     print("General Answer: ", general_answer)
 
     # Query the model from the youtube video data
