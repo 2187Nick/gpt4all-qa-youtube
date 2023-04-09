@@ -7,6 +7,7 @@
 ```
   Enter any youtube video.
   Enter your question.
+  Press Submit.
   
   Output0: Gives the answer based on data from the video.
   Output1: Gives the answer based on the data from your model.
