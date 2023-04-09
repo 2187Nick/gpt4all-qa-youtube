@@ -23,7 +23,7 @@
 ```bash
 
   1. Select model. Default is set to "models" folder.
-       Increasing this will give longer responses.
+       Set it to the location of your model.
 
   2. Response length. Default is set to 30.
        Increasing this will give longer responses.
